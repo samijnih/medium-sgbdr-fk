@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+    php:
+        build:
+            context: .
+        container_name: php
+        working_dir: /app
+        volumes:
+            - $PWD:/app
+
+    postgres:
+        image: postgres:15-alpine
+        container_name: postgres
+        environment:
+            POSTGRES_DB: ecommerce
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        volumes:
+            - $PWD/docker/postgres/:/home
+        expose:
+            - 5432
+        ports:
+            - '5432:5432'

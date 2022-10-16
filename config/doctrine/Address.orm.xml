@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity
+            name="ECommerce\Domain\Model\Address"
+            table="customer_address"
+    >
+        <id name="id" type="guid">
+            <generator strategy="NONE" />
+        </id>
+
+        <field name="name" type="string"/>
+        <field name="street1" type="string"/>
+        <field name="street2" type="string" nullable="true"/>
+        <field name="zipcode" type="string"/>
+        <field name="countryCode" type="string"/>
+        <field name="createdAt" type="datetimetz_immutable"/>
+        <field name="updatedAt" type="datetimetz" nullable="true"/>
+
+        <one-to-one field="customer" target-entity="ECommerce\Domain\Model\Customer" inversed-by="address"/>
+    </entity>
+</doctrine-mapping>

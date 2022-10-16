@@ -1,0 +1,19 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    ECommerce\Infrastructure\Http\Controller\:
+        resource: '%kernel.project_dir%/src/Infrastructure/Http/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    ECommerce\Infrastructure\Repository\CustomerRepository:
+    ECommerce\Domain\Model\CustomerRepository: '@ECommerce\Infrastructure\Repository\CustomerRepository'
+
+    ECommerce\Infrastructure\Clock\SystemImmutableClock: ~
+    ECommerce\Domain\SPI\ImmutableClock: '@ECommerce\Infrastructure\Clock\SystemImmutableClock'
+
+    Ramsey\Uuid\UuidFactory: ~
+    Ramsey\Uuid\UuidFactoryInterface: '@Ramsey\Uuid\UuidFactory'

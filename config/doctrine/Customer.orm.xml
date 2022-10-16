@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity
+            name="ECommerce\Domain\Model\Customer"
+            table="customer"
+    >
+        <id name="id" type="guid">
+            <generator strategy="NONE" />
+        </id>
+
+        <field name="name" type="string"/>
+        <field name="email" type="string"/>
+        <field name="createdAt" type="datetimetz_immutable"/>
+        <field name="updatedAt" type="datetimetz" nullable="true"/>
+
+        <one-to-one field="address" target-entity="ECommerce\Domain\Model\Address" mapped-by="customer" />
+    </entity>
+</doctrine-mapping>

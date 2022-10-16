@@ -1,0 +1,4 @@
+doctrine_migrations:
+    migrations_paths:
+        'ECommerce\Infrastructure\Migration\Doctrine': '%kernel.project_dir%/src/Infrastructure/Migration/Doctrine'
+    enable_profiler: false

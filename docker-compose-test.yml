@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+    postgres_test:
+        image: postgres:15-alpine
+        container_name: postgres_test
+        environment:
+            POSTGRES_DB: ecommerce
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        volumes:
+            - $PWD/docker/postgres/:/home
+        expose:
+            - 5431
+        ports:
+            - '5431:5432'
